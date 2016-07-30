@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+  alert("jQuery file is working");
   $('form').on('submit', function(){
 
       var item = $('form input');
@@ -12,6 +12,7 @@ $(document).ready(function(){
         success: function(data){
           //do something with the data via front-end framework
           location.reload();
+          console.log("It worked.");
         }
       });
 

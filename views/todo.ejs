@@ -10,8 +10,53 @@
 				<input type="text" name="item" placeholder="Add new item..." required />
 				<button type="submit">Add Item</button>
 			</form>
+			<script>
+				$(document).ready(function(){
+  alert("jQuery file is working");
+  $('form').on('submit', function(){
+
+      var item = $('form input');
+      var todo = {item: item.val()};
+
+      $.ajax({
+        type: 'POST',
+        url: '/todo',
+        data: todo,
+        success: function(data){
+          //do something with the data via front-end framework
+          location.reload();
+          console.log("It worked.");
+        }
+      });
+
+      return false;
+
+  });
+
+  $('li').on('click', function(){
+      var item = $(this).text().replace(/ /g, "-");
+      $.ajax({
+        type: 'DELETE',
+        url: '/todo/' + item,
+        success: function(data){
+          //do something with the data via front-end framework
+          location.reload();
+        }
+      });
+  });
+
+});
+
+				
+			</script>
+
+
+
 			<ul>
-			<% for(var i=0; i<todos.length; i++){ %>
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
+			<% for(var i=0; i < todos.length; i++){ %>
 				<li><%= todos[i].item %></li>
 			<% } %>
 		
