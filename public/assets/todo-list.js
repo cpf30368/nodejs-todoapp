@@ -1,5 +1,6 @@
 $(document).ready(function(){
-  alert("jQuery file is working");
+// Test the connection
+//  alert("jQuery file is working");
   $('form').on('submit', function(){
 
       var item = $('form input');
