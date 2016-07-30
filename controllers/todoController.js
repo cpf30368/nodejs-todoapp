@@ -1,4 +1,20 @@
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
+
+//Connect to db
+mongoose.connect('mongodb://test:testtest@ds031965.mlab.com:31965/todo');
+
+//Create schema - this is like a blueprint for what MongoDB is going to expect
+var todoSchema = new mongoose.Schema({
+	item: String
+});
+
+var Todo = mongoose.model('Todo', todoSchema);
+var itemOne = Todo({item: 'buy flowers'}).save(function(err){
+	if(err) throw err;
+	console.log('item saved');
+});
 
 var data = [{item: 'eat sushi'}, {item: 'play with Sophie'}, {item: 'stuff'}];
 var urlencodedParser = bodyParser.urlencoded({extended: false});
