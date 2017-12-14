@@ -1,6 +1,7 @@
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+console.log('your crap website is now awesome');
 
 //Connect to db
 mongoose.connect('mongodb://test:testtest@ds031965.mlab.com:31965/todo');
